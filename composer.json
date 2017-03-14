@@ -1,0 +1,15 @@
+{
+  "name": "nhlm/bloom",
+  "description": "ParseDown based MarkDown Content Enrichment Component",
+  "type": "library",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Bloom\\": "./src"
+    }
+  },
+  "require": {
+    "nhlm/pipechain": "~1.0",
+    "erusev/parsedown-extra": "~0.7"
+  }
+}
