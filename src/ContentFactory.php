@@ -122,7 +122,7 @@ class ContentFactory implements ContentFactoryInterface
 
         if ( $this->contentDataChain instanceof PipeChainInterface ) {
             $dom = new \DOMDocument('1.0', 'utf-8');
-            $dom->loadHTML($content->getContent());
+            $dom->loadHTML($content);
             $body = $dom->getElementsByTagName('body')->item(0);
 
             $processedBody = $this->metaDataChain->process($body);

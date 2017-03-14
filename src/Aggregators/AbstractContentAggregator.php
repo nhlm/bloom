@@ -17,7 +17,7 @@ use Bloom\ContentInterface;
 
 abstract class AbstractContentAggregator implements ContentAggregatorInterface
 {
-    const DEFAULT_DIVIDER = "\n---\n";
+    const DEFAULT_DIVIDER = "(---\n)(\X+?)(\n---\n)";
 
     private $divider;
 
@@ -34,7 +34,15 @@ abstract class AbstractContentAggregator implements ContentAggregatorInterface
      */
     public function patch(string $content): ContentInterface
     {
-        list ( $data, $contents ) = explode($this->divider, $content, 1);
+        $contents = preg_replace_callback(
+            "~^".$this->divider.'~u',
+            function(array $match) use (&$data) {
+                $data = $match[2];
+
+                return '';
+            },
+            $content
+        );
 
         return new Content($this->aggregate(trim($data)), ltrim($contents));
     }
