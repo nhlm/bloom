@@ -14,7 +14,7 @@ Additionally to DOM Patching, BLOOM provides jekyll-aware
 MarkDown front matter Meta Data support that allows to properly
 read markdown content that has a preceding front matter.
 
-## DOM contextual Patching via `PipeChain` pipelines and `DOMDocument
+## DOM contextual Patching via `PipeChain` pipelines and `DOMDocument`
 
 DOM Patching in BLOOM is pipeline based. You can chain
 PipeChains to the `ContentFactory`-instance who receive
