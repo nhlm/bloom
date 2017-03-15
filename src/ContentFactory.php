@@ -125,7 +125,9 @@ class ContentFactory implements ContentFactoryInterface
             $dom->loadHTML($content);
             $body = $dom->getElementsByTagName('body')->item(0);
 
-            $processedBody = $this->metaDataChain->process($body);
+            $context = new DocumentContext($metaData, $body);
+
+            $processedBody = $this->metaDataChain->process($context);
 
             if ( ! $processedBody instanceof \DOMElement ) {
                 throw new BloomException('The content process chain must result in a HTML body representing DOMElement');
